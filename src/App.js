@@ -3,6 +3,19 @@ import Hero from "./hero.jpg"
 import './script'
 
 function App() {
+    var typed = new Typed(".typing", {
+        strings: ["Web Developer","Freelancer"],
+        typeSpeed: 100,
+        backSpeed: 60,
+        loop: true
+    });
+
+    var typed = new Typed(".typing-2", {
+        strings: ["Developer", "Freelancer"],
+        typeSpeed: 100,
+        backSpeed: 60,
+        loop: true
+    });
   return (
     <>
     
