@@ -1,28 +1,43 @@
 import './App.css';
 import Hero from "./hero.jpg"
 import './script'
+import React,{useEffect} from "react"
 
 function App() {
-    var typed = new Typed(".typing", {
+    let navbar = "navbar"
+    let scrollUpBtn = "scroll-up-btn"
+    var typing = {
         strings: ["Web Developer","Freelancer"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
-    });
+    };
+    useEffect(() => {
 
-    var typed = new Typed(".typing-2", {
-        strings: ["Developer", "Freelancer"],
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
+    if(window.scrollY > 20){
+        navbar = navbar + " sticky";
+    }
+    else{
+        navbar = navbar -" sticky";
+    }
+    console.log(navbar)
+    if(window.scrollY > 500){
+        scrollUpBtn = scrollUpBtn + " show"
+    }
+    else{
+        scrollUpBtn = scrollUpBtn - " show"
+    }
+    console.log(scrollUpBtn)
+
+    
+},[window.scrollY]);
   return (
     <>
     
-    <div className="scroll-up-btn">
+    <div className={scrollUpBtn}>
         <i className="fas fa-angle-up"></i>
     </div>
-    <nav className="navbar">
+    <nav className={navbar}>
         <div className="max-width">
             <div className="logo"><a href="http://www.sricharan.me/">Sai Sri<span> Charan.</span></a></div>
             <ul className="menu">
@@ -42,7 +57,7 @@ function App() {
             <div className="home-content">
                 <div className="text-1">Hello, my name is</div>
                 <div className="text-2">Sai Sri Charan</div>
-                <div className="text-3">And I'm a <span className="typing"></span></div>
+                <div className="text-3">And I'm a <span className="chetan"></span></div>
                 <a href="#contact">Hire me</a>
                 <a href="#">Resume</a>
             </div>
@@ -57,7 +72,7 @@ function App() {
                     <img src={Hero} alt=""/>
                 </div>
                 <div className="column right">
-                    <div className="text">I'm Sri Charan and I'm a <span className="typing-2"></span></div>
+                    <div className="text">I'm Sri Charan and I'm a <span className={typing}></span></div>
                     <p>MERN Stack Web Developer With </p>
                     <a href="#">Download CV</a>
                 </div>
