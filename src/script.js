@@ -1,3 +1,4 @@
+import $ from 'jquery';
 $(document).ready(function(){
     $(window).scroll(function(){
         if(this.scrollY > 20){
@@ -28,19 +29,7 @@ $(document).ready(function(){
         $('.menu-btn i').toggleClass("active");
     });
 
-    var typed = new Typed(".typing", {
-        strings: ["Web Developer","Freelancer"],
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
-
-    var typed = new Typed(".typing-2", {
-        strings: ["Developer", "Freelancer"],
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
+    
 
     $('.carousel').owlCarousel({
         margin: 20,
