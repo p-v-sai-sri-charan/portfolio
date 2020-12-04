@@ -1,43 +1,48 @@
 import './App.css';
 import Hero from "./hero.jpg"
 import './script'
-import React,{useEffect} from "react"
+import React,{useEffect,useRef} from "react"
+
 
 function App() {
-    let navbar = "navbar"
-    let scrollUpBtn = "scroll-up-btn"
+    let navbar = useRef(null)
+    let scrollUpBtn = useRef(null)
     var typing = {
         strings: ["Web Developer","Freelancer"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     };
-    useEffect(() => {
-
-    if(window.scrollY > 20){
-        navbar = navbar + " sticky";
+    const handleScroll=() => {
+        let scroll = window.scrollY
+        if(scroll>20){ 
+            
+            navbar.current.className = "navbar sticky"
+        }else{
+            navbar.current.className=""
+            navbar.current.className = "navbar"
+        }
+        if(scroll>500){
+            scrollUpBtn.current.className = "scroll-up-btn show"
+        }
+        else{
+            scrollUpBtn.current.className = "scroll-up-btn"
+        }
     }
-    else{
-        navbar = navbar -" sticky";
-    }
+        useEffect(() => {
+            window.addEventListener('scroll',handleScroll)
+          })
+        
     console.log(navbar)
-    if(window.scrollY > 500){
-        scrollUpBtn = scrollUpBtn + " show"
-    }
-    else{
-        scrollUpBtn = scrollUpBtn - " show"
-    }
-    console.log(scrollUpBtn)
-
     
-},[window.scrollY]);
+
   return (
     <>
     
-    <div className={scrollUpBtn}>
+    <div className="" ref={scrollUpBtn}>
         <i className="fas fa-angle-up"></i>
     </div>
-    <nav className={navbar}>
+    <nav className="" ref={navbar}>
         <div className="max-width">
             <div className="logo"><a href="http://www.sricharan.me/">Sai Sri<span> Charan.</span></a></div>
             <ul className="menu">
